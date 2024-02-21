@@ -48,7 +48,7 @@ fetch('/training-plan-chart-data')
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1,
-                    barThickness: 10 // Set this to the desired thickness of your bars
+                    barThickness: 50 // Set this to the desired thickness of your bars
                 }]
             },
             options: {
@@ -66,15 +66,16 @@ fetch('/training-plan-chart-data')
                     },
                     x: {
                         ticks: {
-                            autoSkip: true, // This will prevent labels from overlapping
-                            maxRotation: 0, // Prevents the labels from rotating
-                            maxTicksLimit: 5 // Adjust the number of ticks based on your needs
+                            autoSkip: true,
+                            maxRotation: 0,
+                            // maxTicksLimit: 10 // Increased to display up to 12 months
                         },
                         title: {
                             display: true,
                             text: 'Month'
                         }
                     }
+
                 },
                 plugins: {
                     legend: {

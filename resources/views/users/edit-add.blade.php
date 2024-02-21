@@ -39,10 +39,25 @@
                         @endif
 
                         <div class="panel-body">
+                            
+                            {{-- New Field: emp_id --}}
+                            <div class="form-group">
+                                <label for="emp_id">Employee ID</label>
+                                <input type="text" class="form-control" id="emp_id" name="emp_id" placeholder="Enter Employee ID"
+                                       value="{{ old('emp_id', $dataTypeContent->emp_id ?? '') }}">
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="name">{{ __('voyager::generic.name') }}</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('voyager::generic.name') }}"
                                        value="{{ old('name', $dataTypeContent->name ?? '') }}">
+                            </div>
+                            
+                            {{-- New Field: emp_department --}}
+                            <div class="form-group">
+                                <label for="emp_department">Department</label>
+                                <input type="text" class="form-control" id="emp_department" name="emp_department" placeholder="Enter Department Name"
+                                       value="{{ old('emp_department', $dataTypeContent->emp_department ?? '') }}">
                             </div>
 
                             <div class="form-group">
@@ -58,6 +73,22 @@
                                     <small>{{ __('voyager::profile.password_hint') }}</small>
                                 @endif
                                 <input type="password" class="form-control" id="password" name="password" value="" autocomplete="new-password">
+                            </div>
+                            {{-- New Field: training_hour --}}
+                            <div class="form-group">
+                                <label for="training_hour">Training Hour</label>
+                                <input type="number" class="form-control" id="training_hour" name="training_hour" placeholder="Enter Training Hours"
+                                       value="{{ old('training_hour', $dataTypeContent->training_hour ?? '') }}">
+                            </div>
+                            
+                            {{-- New Field: status Dropdown --}}
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" name="status">
+                                    <option value="active" {{ old('status', $dataTypeContent->status ?? '') == 'incomplete' ? 'selected' : '' }}>INCOMPLETE</option>
+                                    <option value="inactive" {{ old('status', $dataTypeContent->status ?? '') == 'complete' ? 'selected' : '' }}>COMPLETE</option>
+                                    {{-- Add more status options as needed --}}
+                                </select>
                             </div>
 
                             @can('editRoles', $dataTypeContent)
@@ -80,6 +111,7 @@
                                     @include('voyager::formfields.relationship')
                                 </div>
                             @endcan
+                            
                             @php
                             if (isset($dataTypeContent->locale)) {
                                 $selected_locale = $dataTypeContent->locale;
